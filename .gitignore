@@ -1,0 +1,16 @@
+data/raw/
+data/embeddings/
+data/synthetic_queries/
+data/hard_negatives/
+models/
+*.faiss
+*.npy
+*.pt
+*.safetensors
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.env
+.DS_Store

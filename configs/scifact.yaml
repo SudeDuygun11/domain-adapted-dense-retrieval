@@ -1,0 +1,31 @@
+# SciFact - the practice court.
+# Small (~5.2k docs), binary relevance, well-known published baselines.
+# Use this one to debug the pipeline and validate the evaluation harness.
+
+dataset: scifact                       # goes in the `dataset` column of metrics.csv
+hf_dataset: BeIR/scifact               # corpus + queries live here
+hf_qrels_dataset: BeIR/scifact-qrels   # the answer key lives in a separate repo
+graded_relevance: false                # SciFact judgments are 0/1
+trainable: true                        # ships a train split, so Arm A is possible
+
+base_model: BAAI/bge-small-en-v1.5
+# BGE wants this exact string on queries and nothing on documents.
+# Omit it and the model still runs, just worse, with no error.
+query_prefix: "Represent this sentence for searching relevant passages: "
+doc_prefix: ""
+max_seq_length: 350
+
+seed: 42          # fixes the dev sample; a reshuffling dev set is worse than none
+dev_size: 100     # dev queries held out of the TRAIN split, never out of test
+
+negatives_per_query: 6
+mining:
+  range_min: 10   # skip the top 10: unlabelled correct answers cluster there
+  range_max: 50
+  margin: 0.05    # a negative must score >=5% below the positive
+
+training:
+  lr: 2.0e-5      # must be written 2.0e-5, not 2e-5 - see note in config.py
+  batch_size: 64
+  epochs: 2
+  warmup_ratio: 0.1

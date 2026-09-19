@@ -1,0 +1,25 @@
+{
+  "dataset": "nfcorpus",
+  "hf_dataset": "BeIR/nfcorpus",
+  "hf_qrels_dataset": "BeIR/nfcorpus-qrels",
+  "graded_relevance": true,
+  "config_source": "configs\\nfcorpus.yaml",
+  "created_utc": "2026-09-10T16:38:47+00:00",
+  "seed": 42,
+  "dev_provenance": "official dev split shipped with the dataset",
+  "counts": {
+    "n_docs": 3633,
+    "n_queries_test": 323,
+    "n_qrels_test": 12334,
+    "n_queries_dev": 324,
+    "n_queries_train": 2590
+  },
+  "sha256": {
+    "corpus.jsonl": "5323a94e1c5e2db864ae9d13c09538aeea21329b5d9f1e5c44383acc66a3154e",
+    "qrels_dev.tsv": "a5c3d7ee03af8ed3327074b097d3206d068f3cd53de7a46ff2ade728f5141c31",
+    "qrels_test.tsv": "336598ea9af661be7d8e65349c227777a21e7bf63ecfced854dfb84f84c5e100",
+    "qrels_train.tsv": "18ccce65d192538c294fc1fec45c6585cdf3ba70b9ad2f4906352ca6379072e7",
+    "queries_dev.jsonl": "cbee499e9576a3544020280786d5834670dd7e5c0ab83c717b33e0b050df340d",
+    "queries_test.jsonl": "72cbf5f140b882e7ca1cb6310295ddb6e839658e7e84d9aa0ca2d40ee0958356"
+  }
+}

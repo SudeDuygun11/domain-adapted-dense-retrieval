@@ -1,0 +1,14 @@
+{
+  "dataset": "nfcorpus",
+  "generator": "Qwen/Qwen2.5-1.5B-Instruct",
+  "generator_kind": "instruct",
+  "rejected_malformed": 1540,
+  "n_per_doc": 3,
+  "n_docs": 3633,
+  "seed": 42,
+  "generated": 9358,
+  "kept": 9000,
+  "discarded": 358,
+  "discard_rate": 0.038,
+  "roundtrip_top_k": 10
+}

@@ -1,0 +1,33 @@
+# NFCorpus - the real gap, and the headline result.
+# Lay questions vs PubMed abstracts, so the vocabulary mismatch is genuine.
+# GRADED relevance, so its nDCG is NOT comparable to SciFact's.
+# Absolute scores are low (~0.32-0.35 for good models). That is the dataset.
+
+dataset: nfcorpus
+hf_dataset: BeIR/nfcorpus
+hf_qrels_dataset: BeIR/nfcorpus-qrels
+graded_relevance: true
+trainable: true
+
+base_model: BAAI/bge-small-en-v1.5
+query_prefix: "Represent this sentence for searching relevant passages: "
+doc_prefix: ""
+max_seq_length: 350
+
+seed: 42
+dev_size: 100
+
+negatives_per_query: 6
+mining:
+  range_min: 10
+  range_max: 50
+  margin: 0.05
+
+training:
+  # Chosen on DEV by the sweep in scripts/sweep.py (see README, Results).
+  # The first runs used the guide's defaults, epochs 2 and lr 2.0e-5; these
+  # values supersede them. batch_size 64 needs --cached-loss on a 4 GB GPU.
+  lr: 4.0e-5
+  batch_size: 64
+  epochs: 3
+  warmup_ratio: 0.1

@@ -1,0 +1,25 @@
+{
+  "dataset": "scifact",
+  "hf_dataset": "BeIR/scifact",
+  "hf_qrels_dataset": "BeIR/scifact-qrels",
+  "graded_relevance": false,
+  "config_source": "configs\\scifact.yaml",
+  "created_utc": "2026-09-09T15:41:47+00:00",
+  "seed": 42,
+  "dev_provenance": "sampled 100 queries from train with seed=42",
+  "counts": {
+    "n_docs": 5183,
+    "n_queries_test": 300,
+    "n_qrels_test": 339,
+    "n_queries_dev": 100,
+    "n_queries_train": 709
+  },
+  "sha256": {
+    "corpus.jsonl": "e6072362cada0e400993bec1cce8f04c6757738324606018fc7bfafc1b2f2b82",
+    "qrels_dev.tsv": "538467ab35af306ab7ed0d911836bc8d57b244cb22f89f9df5e13bcbfb46edb3",
+    "qrels_test.tsv": "5602d9f31c96d309a906692e1b722a9acfc4138c5d52e06d47bbb89a9c4ab7c3",
+    "qrels_train.tsv": "30d8d05557511b33e9daa889c5c5ad82f3906a663407245c1e08daa0dd729dc8",
+    "queries_dev.jsonl": "8456e49cf8e42a0954f70cd6c9acae8c407de2ef22de431ee51b43630307cae3",
+    "queries_test.jsonl": "103abe444f2aae6ed97883ecaee135f3704e010dbcd15138675516d5dae20ee8"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "dataset": "nfcorpus",
+  "generator": "BeIR/query-gen-msmarco-t5-base-v1",
+  "generator_kind": "seq2seq",
+  "n_per_doc": 3,
+  "n_docs": 3633,
+  "seed": 42,
+  "generated": 10899,
+  "kept": 10122,
+  "discarded": 777,
+  "discard_rate": 0.071,
+  "roundtrip_top_k": 10,
+  "note": "Reconstructed from the run's printed summary. The original stats file was overwritten by a 32-document throughput test before the output-name fix in generate_queries.py."
+}

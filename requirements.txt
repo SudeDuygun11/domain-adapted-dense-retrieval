@@ -1,0 +1,30 @@
+# Reproduction environment. Tested on Python 3.11, Windows 11.
+#
+# PyTorch is deliberately NOT listed. `pip install torch` gives a CPU-only build
+# on Windows, and fine-tuning on CPU took ~50 s per step. Install the build that
+# matches your GPU first - see "Reproduce" in README.md.
+
+# --- data ---
+datasets<3.0.0        # BeIR/* repos use a loading script; datasets 3.x removed script support
+pyyaml
+numpy
+pandas
+
+# --- retrieval ---
+faiss-cpu
+rank_bm25             # pure Python; NOT leaderboard-comparable, see src/bm25.py
+sentence-transformers
+accelerate>=1.1.0     # the Trainer needs it; sentence-transformers does not pull it in
+
+# --- synthetic query generation (T5 and Qwen generators) ---
+sentencepiece         # T5 tokenizer
+tiktoken              # transformers >=5 needs it to read some tokenizer files
+protobuf
+
+# --- evaluation ---
+# The -terrier fork, not plain `pytrec_eval`: same API and same trec_eval C code,
+# but it ships prebuilt Windows wheels, so no Visual C++ build tools are needed.
+pytrec_eval-terrier
+
+# --- tests ---
+pytest

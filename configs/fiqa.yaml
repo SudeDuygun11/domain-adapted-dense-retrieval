@@ -1,0 +1,24 @@
+# FiQA - EVAL ONLY. Never train on this.
+#
+# Two jobs:
+#   1. Forgetting check. Financial text is maximally distant from biology, so a
+#      drop here is a clean signal. Measure the BASE model first - the number
+#      only means anything as a delta (0.40 base -> 0.38 tuned).
+#   2. ANN sweep. At ~58k docs it is the only set big enough for approximate
+#      search to be solving a problem that actually exists.
+#
+# `trainable: false` is load-bearing: train.py must refuse this config.
+# The mining/ and training/ blocks are deliberately absent.
+
+dataset: fiqa
+hf_dataset: BeIR/fiqa
+hf_qrels_dataset: BeIR/fiqa-qrels
+graded_relevance: false
+trainable: false
+
+base_model: BAAI/bge-small-en-v1.5
+query_prefix: "Represent this sentence for searching relevant passages: "
+doc_prefix: ""
+max_seq_length: 350
+
+seed: 42

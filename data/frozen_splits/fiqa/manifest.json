@@ -1,0 +1,25 @@
+{
+  "dataset": "fiqa",
+  "hf_dataset": "BeIR/fiqa",
+  "hf_qrels_dataset": "BeIR/fiqa-qrels",
+  "graded_relevance": false,
+  "config_source": "configs\\fiqa.yaml",
+  "created_utc": "2026-09-10T19:07:47+00:00",
+  "seed": 42,
+  "dev_provenance": "official dev split shipped with the dataset",
+  "counts": {
+    "n_docs": 57638,
+    "n_queries_test": 648,
+    "n_qrels_test": 1706,
+    "n_queries_dev": 500,
+    "n_queries_train": 5500
+  },
+  "sha256": {
+    "corpus.jsonl": "46eea98afd1986dd241d40cf29d6dadf4d1ec34cb5c20b9c7b7bac71fe1c2fea",
+    "qrels_dev.tsv": "ee7d047c64652bf99bc1a023a84a0d86a999e29c9833108c12673c9985294abb",
+    "qrels_test.tsv": "fae53204171d1a506b0ea6f5d39dd1f8c3d40e6701972f265ef53799d149fc04",
+    "qrels_train.tsv": "33f04a8cd19857e1cff4dc4b4366fdd28099b1e4f7e2915514f2b917ba285a00",
+    "queries_dev.jsonl": "8ea4ecc1cbc73b475b2b8fbc6f8d5155ceed1e239a761bf9392e8e995edf072c",
+    "queries_test.jsonl": "2ab60ce27018efa7aec06ce555995794112c454bda93d0aa7354dacf0dec39d5"
+  }
+}

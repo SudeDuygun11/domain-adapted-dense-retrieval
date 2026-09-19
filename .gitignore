@@ -1,6 +1,12 @@
 data/raw/
 data/embeddings/
-data/synthetic_queries/
+# Generated queries ARE committed (~2 MB): sampling was unseeded when they were
+# made, so they cannot be regenerated identically and Arm B depends on them.
+# Only the resumable raw checkpoints stay ignored.
+data/synthetic_queries/*
+!data/synthetic_queries/*.jsonl
+!data/synthetic_queries/*.stats.json
+data/synthetic_queries/*.raw.jsonl
 data/hard_negatives/
 models/
 *.faiss

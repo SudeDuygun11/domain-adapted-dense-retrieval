@@ -1,1 +1,36 @@
 dataset,model_name,trained_on,training_arm,index_type,ndcg@10,recall@50,recall@100,mrr@10,query_prefix_used,seed,run_file,notes
+scifact,bm25_rank_bm25,,baseline,bm25,0.6523,0.8691,0.8731,0.6184,no,42,data/runs/scifact_bm25_test.trec,"rank_bm25 pure python, not Anserini-comparable"
+scifact,BAAI/bge-small-en-v1.5,,baseline,flat,0.7127,0.9317,0.9450,0.6821,yes,42,data/runs/scifact_base_test.trec,"off-the-shelf, no fine-tuning"
+scifact,BAAI/bge-small-en-v1.5,,baseline,flat,0.7132,0.9217,0.9533,0.6772,no,42,data/runs/scifact_base_test_noprefix.trec,"ABLATION: prefix omitted, not a baseline"
+scifact,cross-encoder/ms-marco-MiniLM-L-6-v2,,baseline,rerank_top50,0.6964,0.9317,0.9450,0.6644,no,42,data/runs/scifact_base_test_rerank_top50.trec,"stage 3 reranker over scifact_base_test, off-the-shelf MS MARCO"
+scifact,cross-encoder/ms-marco-MiniLM-L-12-v2,,baseline,rerank_top50,0.6965,0.9317,0.9450,0.6659,no,42,data/runs/scifact_base_test_rerank_L12_top50.trec,"stage 3, larger MS MARCO cross-encoder"
+nfcorpus,bm25_rank_bm25,,baseline,bm25,0.3062,0.2108,0.2427,0.5085,no,42,data/runs/nfcorpus_bm25_test.trec,"rank_bm25 pure python, not Anserini-comparable"
+nfcorpus,BAAI/bge-small-en-v1.5,,baseline,flat,0.3423,0.2554,0.3090,0.5247,yes,42,data/runs/nfcorpus_base_test.trec,"off-the-shelf, no fine-tuning"
+nfcorpus,BAAI/bge-small-en-v1.5,,baseline,flat,0.3396,0.2587,0.3043,0.5337,no,42,data/runs/nfcorpus_base_test_noprefix.trec,"ABLATION: prefix omitted, not a baseline"
+fiqa,bm25_rank_bm25,,baseline,bm25,0.2175,0.4051,0.4752,0.2713,no,42,data/runs/fiqa_bm25_test.trec,"rank_bm25 pure python, not Anserini-comparable"
+fiqa,BAAI/bge-small-en-v1.5,,baseline,flat,0.3972,0.6177,0.6892,0.4836,yes,42,data/runs/fiqa_base_test.trec,"FORGETTING REFERENCE: base model, never fine-tuned"
+nfcorpus,models/nfcorpus_real_labels_s42,nfcorpus,real_labels,flat,0.3706,0.3007,0.3634,0.5511,yes,42,data/runs/nfcorpus_real_labels_s42_test.trec,"stage 2 Arm A, 9321 rows, 6 negs, cached loss, seed 42"
+nfcorpus,models/nfcorpus_synthetic_s42,nfcorpus,synthetic,flat,0.3431,0.2577,0.3136,0.5297,yes,42,data/runs/nfcorpus_synthetic_s42_test.trec,"stage 2 Arm B, 9935 rows, 6 negs, cached loss, seed 42"
+fiqa,models/nfcorpus_real_labels_s42,nfcorpus,real_labels,flat,0.3843,0.6089,0.6786,0.4628,yes,42,data/runs/fiqa_nf_real_labels_s42_test.trec,"FORGETTING CHECK: tuned on nfcorpus, evaluated on fiqa"
+fiqa,models/nfcorpus_synthetic_s42,nfcorpus,synthetic,flat,0.3813,0.6057,0.6811,0.4605,yes,42,data/runs/fiqa_nf_synthetic_s42_test.trec,"FORGETTING CHECK: tuned on nfcorpus, evaluated on fiqa"
+nfcorpus,models/nfcorpus_synthetic_qwen_s42,nfcorpus,synthetic,flat,0.3474,0.2614,0.3219,0.5340,yes,42,data/runs/nfcorpus_synthetic_qwen_s42_test.trec,"stage 2 Arm B v2, Qwen2.5-1.5B-Instruct queries, 8912 rows, seed 42"
+nfcorpus,base,,baseline,flat,0.3291,0.2616,0.3164,0.5191,yes,42,data/runs/nfcorpus_base_dev.trec,[SPLIT=DEV] dev baseline for sweep comparison
+nfcorpus,real_labels_s42,nfcorpus,real_labels,flat,0.3544,0.2835,0.3527,0.5375,yes,42,data/runs/nfcorpus_real_labels_s42_dev.trec,[SPLIT=DEV] dev baseline for sweep comparison
+nfcorpus,synthetic_qwen_s42,nfcorpus,synthetic,flat,0.3344,0.2579,0.3147,0.5328,yes,42,data/runs/nfcorpus_synthetic_qwen_s42_dev.trec,[SPLIT=DEV] dev baseline for sweep comparison
+nfcorpus,synthetic_s42,nfcorpus,synthetic,flat,0.3392,0.2590,0.3136,0.5307,yes,42,data/runs/nfcorpus_synthetic_s42_dev.trec,[SPLIT=DEV] dev baseline for sweep comparison
+nfcorpus,models/nfcorpus_sweep_armA_ep3,nfcorpus,real_labels,flat,0.3616,0.2881,0.3547,0.5514,yes,42,data/runs/nfcorpus_sweep_armA_ep3_dev.trec,[SPLIT=DEV] SWEEP epochs: armA_ep3 (--epochs 3)
+nfcorpus,models/nfcorpus_sweep_armB_qwen_ep3,nfcorpus,synthetic,flat,0.3340,0.2574,0.3128,0.5338,yes,42,data/runs/nfcorpus_sweep_armB_qwen_ep3_dev.trec,[SPLIT=DEV] SWEEP epochs: armB_qwen_ep3 (--epochs 3)
+nfcorpus,models/nfcorpus_sweep_armA_ep5,nfcorpus,real_labels,flat,0.3698,0.2948,0.3587,0.5621,yes,42,data/runs/nfcorpus_sweep_armA_ep5_dev.trec,[SPLIT=DEV] SWEEP epochs5: armA_ep5 (--epochs 5 --eval-steps 146)
+nfcorpus,models/nfcorpus_sweep_rangemin5,nfcorpus,real_labels,flat,0.3611,0.2887,0.3551,0.5472,yes,42,data/runs/nfcorpus_sweep_rangemin5_dev.trec,[SPLIT=DEV] SWEEP range_min: rangemin5 (epochs=3 batch=64 lr=2.00e-05 seed=42)
+nfcorpus,models/nfcorpus_sweep_rangemin20,nfcorpus,real_labels,flat,0.3613,0.2859,0.3551,0.5503,yes,42,data/runs/nfcorpus_sweep_rangemin20_dev.trec,[SPLIT=DEV] SWEEP range_min: rangemin20 (epochs=3 batch=64 lr=2.00e-05 seed=42)
+nfcorpus,models/nfcorpus_sweep_armA_bs128,nfcorpus,real_labels,flat,0.3654,0.2911,0.3583,0.5537,yes,42,data/runs/nfcorpus_sweep_armA_bs128_dev.trec,[SPLIT=DEV] SWEEP batch: armA_bs128 (epochs=3 batch=128 lr=4.00e-05 seed=42)
+nfcorpus,models/nfcorpus_sweep_armA_bs256,nfcorpus,real_labels,flat,0.3658,0.2931,0.3632,0.5608,yes,42,data/runs/nfcorpus_sweep_armA_bs256_dev.trec,[SPLIT=DEV] SWEEP batch: armA_bs256 (epochs=3 batch=256 lr=8.00e-05 seed=42)
+nfcorpus,models/nfcorpus_sweep_armA_lr1e5,nfcorpus,real_labels,flat,0.3522,0.2814,0.3517,0.5361,yes,42,data/runs/nfcorpus_sweep_armA_lr1e5_dev.trec,[SPLIT=DEV] SWEEP lr: armA_lr1e5 (epochs=3 batch=64 lr=1.00e-05 seed=42)
+nfcorpus,models/nfcorpus_sweep_armA_lr4e5,nfcorpus,real_labels,flat,0.3695,0.2949,0.3606,0.5629,yes,42,data/runs/nfcorpus_sweep_armA_lr4e5_dev.trec,[SPLIT=DEV] SWEEP lr: armA_lr4e5 (epochs=3 batch=64 lr=4.00e-05 seed=42)
+fiqa,BAAI/bge-small-en-v1.5,,baseline,flat,0.4070,0.6378,0.7003,0.4855,yes,42,data/runs/fiqa_base_dev.trec,[SPLIT=DEV] FORGETTING REF: base model on fiqa dev
+fiqa,models/nfcorpus_sweep_armA_ep3,nfcorpus,real_labels,flat,0.3845,0.6230,0.6909,0.4615,yes,42,data/runs/fiqa_nf_sweep_armA_ep3_dev.trec,"[SPLIT=DEV] FORGETTING CHECK: sweep_armA_ep3 tuned on nfcorpus, fiqa dev"
+fiqa,models/nfcorpus_sweep_armA_lr4e5,nfcorpus,real_labels,flat,0.3803,0.6131,0.6823,0.4489,yes,42,data/runs/fiqa_nf_sweep_armA_lr4e5_dev.trec,"[SPLIT=DEV] FORGETTING CHECK: sweep_armA_lr4e5 tuned on nfcorpus, fiqa dev"
+nfcorpus,models/nfcorpus_sweep_armA_lr4e5,nfcorpus,real_labels,flat,0.3865,0.3188,0.3837,0.5708,yes,42,data/runs/nfcorpus_sweep_armA_lr4e5_test.trec,"FINAL CONFIG, single test measurement: epochs 3, batch 64, lr 4e-5, seed 42, chosen on dev"
+nfcorpus,cross-encoder/ms-marco-MiniLM-L-6-v2,nfcorpus,real_labels,rerank_top50,0.3427,0.2949,0.3607,0.5502,no,42,data/runs/nf_final_dev_rerank_ms-marco-MiniLM-L-6-v2.trec,"[SPLIT=DEV] STAGE3 on final fine-tuned model, top 50"
+nfcorpus,ncbi/MedCPT-Cross-Encoder,nfcorpus,real_labels,rerank_top50,0.3564,0.2949,0.3606,0.5506,no,42,data/runs/nf_final_dev_rerank_MedCPT-Cross-Encoder.trec,"[SPLIT=DEV] STAGE3 on final fine-tuned model, top 50"
+nfcorpus,ncbi/MedCPT-Cross-Encoder,nfcorpus,real_labels,rerank_top10,0.3690,0.2949,0.3606,0.5563,no,42,data/runs/nf_final_dev_medcpt_top10.trec,"[SPLIT=DEV] STAGE3 depth sweep, top 10"
